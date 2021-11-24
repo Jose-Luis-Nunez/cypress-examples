@@ -21,7 +21,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build
-          path: .next
+          path: build
 
       - name: UI Tests Firefox
         uses: cypress-io/github-action@v2
