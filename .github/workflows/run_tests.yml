@@ -8,31 +8,9 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
-  install:
-    runs-on: ubuntu-latest
-    container: cypress/browsers:node14.17.0-chrome88-ff89
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Save build folder
-        uses: actions/upload-artifact@v2
-        with:
-          name: build
-          if-no-files-found: error
-          path: ./build/*
-
-      - name: Cypress install
-        uses: cypress-io/github-action@v2
-        with:
-          # Disable running of tests within install job
-          runTests: false
-          build: npm run build
-
   chrome:
     runs-on: ubuntu-latest
     container: cypress/browsers:node14.17.0-chrome88-ff89
-    needs: install
     strategy:
       fail-fast: false
       matrix:
@@ -41,21 +19,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
-      - name: Download the build folder
-        uses: actions/download-artifact@v2
-        with:
-          name: build
-          path: ./build/*
-
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          install: false
           record: true
           parallel: true
           group: 'UI Tests'
-
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
