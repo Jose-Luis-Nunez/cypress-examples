@@ -12,8 +12,8 @@ export class RegistrationPage {
     }
 
     createNewAccount(user) {
-        this.enterEmail(user.getRandomEmail())
-        this.enterPassword(user.getRandomPassword())
+        this.enterEmail(user.email)
+        this.enterPassword(user.password)
     }
 
     enterEmail(email) {
