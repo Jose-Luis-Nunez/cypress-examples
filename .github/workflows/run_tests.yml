@@ -22,7 +22,6 @@ jobs:
           path: |
             ~/.cache/Cypress
             node_modules
-          if-no-files-found: error
           key: my-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       - name: Cypress install
