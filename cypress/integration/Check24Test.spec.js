@@ -12,13 +12,13 @@ describe('product search test', () => {
     beforeEach(() => {
         startPage.openHomePage()
     })
-    /*
-    it('should search for product', () => {
-        startPage.acceptCookies()
-        startPage.searchForProduct("PS5")
 
-        expect(resultPage.getResultPageHeader()).to.exist
-    })*/
+    it('should search for product', () => {
+        //startPage.acceptCookies()
+        //startPage.searchForProduct("PS5")
+
+        //expect(resultPage.getResultPageHeader()).to.exist
+    })
 /*
     it('should start login', () => {
         startPage.acceptCookies()
