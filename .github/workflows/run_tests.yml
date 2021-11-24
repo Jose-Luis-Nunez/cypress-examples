@@ -11,6 +11,7 @@ on:
 jobs:
   install:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     container: cypress/browsers:node12.18.3-chrome87-ff82
     steps:
       - name: Checkout
@@ -27,6 +28,6 @@ jobs:
       - name: Cypress install
         uses: cypress-io/github-action@v2
         with:
-          # Disable running of tests within install job
-          runTests: false
-          build: yarn build
+          build: npm run build
+          start: npm start
+          browser: chrome
