@@ -1,7 +1,6 @@
 /lib
 .idea
 .tmp
-/build
 
 # dependencies
 /node_modules/
