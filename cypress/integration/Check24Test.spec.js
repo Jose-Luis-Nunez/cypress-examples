@@ -27,4 +27,11 @@ describe('product search test', () => {
 
         expect(registration.getBackButton()).to.exist
     })
+    it('should start login', () => {
+        startPage.acceptCookies()
+        startPage.clickOnLogin()
+        registration.createNewAccount(user)
+
+        expect(registration.getBackButton()).to.exist
+    })
 })
