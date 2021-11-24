@@ -13,6 +13,7 @@ jobs:
       - name: Save build folder
         uses: actions/upload-artifact@v2
         with:
+          name: build
           path: |
             ~/.cache/Cypress
             node_modules
