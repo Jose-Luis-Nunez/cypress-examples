@@ -11,7 +11,6 @@ on:
 jobs:
   chrome:
     runs-on: ubuntu-20.04
-    container: cypress/browsers:node14.17.0-chrome88-ff89
     name: test inside costom image
     steps:
       - name: Checkout
@@ -19,7 +18,7 @@ jobs:
       - name: run tests on chrome
         uses: cypress-io/github-action@v2
         with:
-          browser: electron
+          browser: chrome
           headless: true
           record: true
         env:
