@@ -10,26 +10,26 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
-  chrome:
+  install:
     runs-on: ubuntu-latest
-      container: cypress/browsers:node14.17.0-chrome91-ff89
-  needs: build
+    container: cypress/browsers:node14.17.0-chrome91-ff89
+    needs: build
 
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Download build artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: build
-        path: .next
+      - name: Download build artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: .next
 
-    - name: UI Tests Firefox
-      uses: cypress-io/github-action@v2
-      with:
-        install: npm install
-        wait-on-timeout: 120
-        browser: firefox
-        group: "UI - Firefox"
-        start: npm start
+      - name: UI Tests Firefox
+        uses: cypress-io/github-action@v2
+        with:
+          install: npm install
+          wait-on-timeout: 120
+          browser: firefox
+          group: "UI - Firefox"
+          start: npm start
