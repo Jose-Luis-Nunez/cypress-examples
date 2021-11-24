@@ -11,10 +11,20 @@ on:
 jobs:
   chrome:
     runs-on: ubuntu-latest
-    name: test inside costom image
+    timeout-minutes: 10
+    container: cypress/browsers:node14.17.0-chrome88-ff89
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v2
+        with:
+          path: |
+            ~/.cache/Cypress
+            node_modules
+          key: my-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
       - name: run tests on chrome
         uses: cypress-io/github-action@v2
         with:
