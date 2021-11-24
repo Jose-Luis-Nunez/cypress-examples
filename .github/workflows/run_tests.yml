@@ -9,27 +9,23 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
-  chrome:
+  install:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node14.17.0-chrome91-ff89
-
+    container: cypress/browsers:node12.18.3-chrome87-ff82
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Download build artifact
-        uses: actions/download-artifact@v2
+      - name: Save build folder
+        uses: actions/upload-artifact@v2
         with:
-          path: ~/.npm
-          key: ${{ runner.OS }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-          ${{ runner.OS }}-npm-cache
+          name: build
+          if-no-files-found: error
+          path: build
 
-      - name: UI Tests Firefox
+      - name: Cypress install
         uses: cypress-io/github-action@v2
         with:
-          install: npm install
-          wait-on-timeout: 120
-          browser: firefox
-          group: "UI - Firefox"
-          start: npm start
+          # Disable running of tests within install job
+          runTests: false
+          build: yarn build
