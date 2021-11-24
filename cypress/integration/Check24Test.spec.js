@@ -19,7 +19,7 @@ describe('product search test', () => {
 
         expect(resultPage.getResultPageHeader()).to.exist
     })*/
-
+/*
     it('should start login', () => {
         startPage.acceptCookies()
         startPage.clickOnLogin()
@@ -27,4 +27,5 @@ describe('product search test', () => {
 
         expect(registration.getBackButton()).to.exist
     })
+ */
 })
