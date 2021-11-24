@@ -1,4 +1,4 @@
-name: Cypress tests
+name: Cypress chrome tests
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
-  install:
+  chrome:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     container: cypress/browsers:node12.18.3-chrome87-ff82
@@ -25,9 +25,7 @@ jobs:
             node_modules
           key: my-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
-      - name: Cypress install
+      - name: run tests on chrome
         uses: cypress-io/github-action@v2
         with:
-          build: npm run build
-          start: npm start
           browser: chrome
