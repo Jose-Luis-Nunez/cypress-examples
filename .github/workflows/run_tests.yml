@@ -13,7 +13,6 @@ jobs:
       - name: Save build folder
         uses: actions/upload-artifact@v2
         with:
-          name: build
           if-no-files-found: error
           path: |
             ~/.cache/Cypress
