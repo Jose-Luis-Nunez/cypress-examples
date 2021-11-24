@@ -23,7 +23,7 @@ jobs:
           path: ~/.npm
           key: ${{ runner.OS }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-          ${{ runner.OS }}-npm-cache-
+          ${{ runner.OS }}-npm-cache
 
       - name: UI Tests Firefox
         uses: cypress-io/github-action@v2
