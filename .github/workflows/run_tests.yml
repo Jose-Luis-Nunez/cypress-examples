@@ -15,7 +15,10 @@ jobs:
         with:
           name: build
           if-no-files-found: error
-          path: build
+          path: |
+            ~/.cache/Cypress
+            node_modules
+          key: my-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       - name: Cypress install
         uses: cypress-io/github-action@v2
