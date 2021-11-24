@@ -20,8 +20,10 @@ jobs:
       - name: Download build artifact
         uses: actions/download-artifact@v2
         with:
-          name: build
-          path: build
+          path: ~/.npm
+          key: ${{ runner.OS }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+          ${{ runner.OS }}-npm-cache-
 
       - name: UI Tests Firefox
         uses: cypress-io/github-action@v2
