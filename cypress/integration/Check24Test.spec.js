@@ -27,7 +27,15 @@ describe('product search test', () => {
 
         expect(registration.getBackButton()).to.exist
     })
-    it('should start login', () => {
+
+    it('should search for product2', () => {
+        startPage.acceptCookies()
+        startPage.searchForProduct("PS5")
+
+        expect(resultPage.getResultPageHeader()).to.exist
+    })
+
+    it('should start login2', () => {
         startPage.acceptCookies()
         startPage.clickOnLogin()
         registration.createNewAccount(user)
