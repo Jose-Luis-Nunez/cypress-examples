@@ -1,3 +1,4 @@
+#Run Cypress tests for firefox
 name: Cypress tests
 
 on:
@@ -9,24 +10,28 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
-  chrome:
-    runs-on: ubuntu-latest
+  name: chrome
+  runs-on: ubuntu-latest
     container:
       image: cypress/browsers:node14.17.0-chrome91-ff89
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      options: --user 1001
+  needs: build
 
-      - name: Download the build folders
-        uses: actions/download-artifact@v2
-        with:
-          name: build
-          path: .next
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v2
-        timeout-minutes: 10
-        with:
-          build: npm run build
-          start: npm start
-          browser: chrome
+    - name: Download build artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: build
+        path: .next
+
+    - name: UI Tests Firefox
+      uses: cypress-io/github-action@v2
+      with:
+        install: npm install
+        wait-on-timeout: 120
+        browser: firefox
+        group: "UI - Firefox"
+        start: npm start
