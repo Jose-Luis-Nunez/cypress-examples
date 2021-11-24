@@ -19,9 +19,9 @@ jobs:
       - name: Save build folder
         uses: actions/upload-artifact@v2
         with:
-          name: build
-          if-no-files-found: error
+          name: bundle
           path: build
+          if-no-files-found: error
 
       - name: Cypress install
         uses: cypress-io/github-action@v2
