@@ -14,10 +14,10 @@ describe('product search test', () => {
     })
 
     it('should search for product', () => {
-        //startPage.acceptCookies()
-        //startPage.searchForProduct("PS5")
+        startPage.acceptCookies()
+        startPage.searchForProduct("PS5")
 
-        //expect(resultPage.getResultPageHeader()).to.exist
+        expect(resultPage.getResultPageHeader()).to.exist
     })
 /*
     it('should start login', () => {
