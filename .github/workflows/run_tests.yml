@@ -30,6 +30,7 @@ jobs:
         with:
           browser: chrome
           record: true
+          group: 'UI - Chrome'
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 

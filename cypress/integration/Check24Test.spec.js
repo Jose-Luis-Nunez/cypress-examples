@@ -1,6 +1,5 @@
 import {StartPage} from '../pageobjects/StartPage'
 import {ResultPage} from "../pageobjects/ResultPage";
-import {} from "../support/index.js";
 import {TestUser} from "../utils/TestUser";
 import {RegistrationPage} from "../pageobjects/RegistrationPage";
 
@@ -11,7 +10,7 @@ describe('product search test', () => {
     const registration = new RegistrationPage()
 
     beforeEach(() => {
-        cy.openHomePage()
+        startPage.openHomePage()
     })
 
     it('should search for product', () => {

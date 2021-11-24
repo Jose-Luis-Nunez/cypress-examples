@@ -5,7 +5,12 @@ export class StartPage {
     constructor() {
         this.acceptCookiesButton = '.c24-cookie-consent-notice-buttons .c24-cookie-consent-button:nth-child(2)'
         this.searchField = 'input[name=\'q\']'
-        this.loginButton = ".c24-customer [href*='user/login']"
+        this.loginButton = '.c24-customer [href*=\'user/login\']'
+        this.url = 'https://www.check24.de/'
+    }
+
+    openHomePage() {
+        cy.visit(this.url)
     }
 
     acceptCookies() {
