@@ -19,9 +19,11 @@ jobs:
       - name: Save build folder
         uses: actions/upload-artifact@v2
         with:
-          name: bundle
-          path: build
+          path: |
+            ~/.cache/Cypress
+            node_modules
           if-no-files-found: error
+          key: my-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       - name: Cypress install
         uses: cypress-io/github-action@v2
