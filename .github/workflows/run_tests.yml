@@ -9,7 +9,7 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
-  chrome docker:
+  chrome:
     runs-on: ubuntu-latest
     container: cypress/browsers:node14.17.0-chrome91-ff89
 
