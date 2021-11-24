@@ -19,7 +19,7 @@ jobs:
       - name: run tests on chrome
         uses: cypress-io/github-action@v2
         with:
-          browser: firefox
+          browser: electron
           headless: true
           record: true
         env:
