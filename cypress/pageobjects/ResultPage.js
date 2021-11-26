@@ -10,3 +10,5 @@ export class ResultPage {
         return cy.get(this.header)
     }
 }
+
+export default new ResultPage

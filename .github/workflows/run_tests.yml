@@ -2,35 +2,32 @@ name: Cypress chrome tests
 
 on:
   push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 6 * * *'
 
 jobs:
   chrome:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     container: cypress/browsers:node14.17.0-chrome88-ff89
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [ 1, 2 ]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Save build folder
-        uses: actions/upload-artifact@v2
-        with:
-          path: |
-            ~/.cache/Cypress
-            node_modules
-          key: my-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
-
-      - name: run tests on chrome
+      - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
           browser: chrome
           headless: true
+          parallel: true
           record: true
+          group: 'UI - Chrome'
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}

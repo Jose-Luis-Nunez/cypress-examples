@@ -25,3 +25,5 @@ export class StartPage {
         cy.get(this.loginButton).eq(1).should('be.visible').click()
     }
 }
+
+export default new StartPage
