@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ master ]
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 6 * * *'
 
 jobs:
   chrome:
@@ -19,12 +19,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
-          record: true
+          browser: chrome
+          headless: true
           parallel: true
-          group: 'UI Tests'
+          record: true
+          group: 'UI - Chrome'
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
