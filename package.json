@@ -11,5 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "cypress": "^9.1.0"
+  },
+  "dependencies": {
+    "unique-names-generator": "^4.6.0"
   }
 }

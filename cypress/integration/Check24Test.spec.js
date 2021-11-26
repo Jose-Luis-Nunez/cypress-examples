@@ -1,27 +1,24 @@
-import {StartPage} from '../pageobjects/StartPage'
-import {ResultPage} from "../pageobjects/ResultPage";
-import {TestUser} from "../utils/TestUser";
-import {RegistrationPage} from "../pageobjects/RegistrationPage";
+import startPage from "../pageobjects/StartPage";
+import resultPage from "../pageobjects/ResultPage";
+import registration from "../pageobjects/RegistrationPage";
+import {UserTestData} from "../utils/UserTestData";
 
-describe('Chek 24 tests', () => {
-    const user = new TestUser()
-    const startPage = new StartPage()
-    const resultPage = new ResultPage()
-    const registration = new RegistrationPage()
+describe('Check 24 tests', () => {
 
     beforeEach(() => {
         startPage.openHomePage()
+        startPage.acceptCookies()
     })
 
     it('should search for product', () => {
-        startPage.acceptCookies()
         startPage.searchForProduct("PS5")
 
         expect(resultPage.getResultPageHeader()).to.exist
     })
 
     it('should start registration', () => {
-        startPage.acceptCookies()
+        const user = new UserTestData()
+
         startPage.clickOnLogin()
         registration.createNewAccount(user)
 

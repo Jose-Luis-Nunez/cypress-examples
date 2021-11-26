@@ -31,3 +31,5 @@ export class RegistrationPage {
         return cy.getIframeBody(this.backButton).find(this.backButton)
     }
 }
+
+export default new RegistrationPage
