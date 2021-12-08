@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 export class StartPage {
 
     constructor() {
