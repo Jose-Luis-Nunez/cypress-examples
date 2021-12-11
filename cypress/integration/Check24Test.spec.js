@@ -1,3 +1,4 @@
+/*
 import startPage from "../pageobjects/StartPage";
 import resultPage from "../pageobjects/ResultPage";
 import registration from "../pageobjects/RegistrationPage";
@@ -25,3 +26,4 @@ describe('Check 24 tests', () => {
         expect(registration.getBackButton()).to.exist
     })
 })
+*/
