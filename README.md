@@ -8,8 +8,6 @@ Example Cypress project for web UI automation with page object pattern and cucum
 ### Example test with page object pattern
 
 ```js
-import {UserTestData} from "../utils/UserTestData";
-
 describe('Check 24 tests', () => {
 
     beforeEach(() => {
@@ -19,8 +17,11 @@ describe('Check 24 tests', () => {
 
     it('should search for product', () => {
         startPage.searchForProduct("PS5")
+        resultPage.selectManufacturer("Sony")
+        resultPage.selectCategory('Sony Playstation')
+        resultPage.sortBy(Dropdown.PRICE_ASCENDING)
 
-        expect(resultPage.getResultPageHeader()).to.exist
+        resultPage.getProductTiles().should('have.length.greaterThan', 0)
     })
 
     it('should start registration', () => {
