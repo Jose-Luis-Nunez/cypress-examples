@@ -33,3 +33,5 @@ Cypress.Commands.add('getIframeBody', () => {
 Cypress.Commands.add('openHomePage', () => {
     cy.visit('https://www.check24.de/')
 })
+
+import 'cypress-wait-until';

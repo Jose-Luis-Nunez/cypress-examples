@@ -13,7 +13,8 @@
   "license": "ISC",
   "devDependencies": {
     "cypress": "^9.1.1",
-    "cypress-cucumber-preprocessor": "^4.3.1"
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-wait-until": "^1.7.2"
   },
   "dependencies": {
     "unique-names-generator": "^4.6.0"
