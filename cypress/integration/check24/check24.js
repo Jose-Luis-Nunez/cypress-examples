@@ -6,7 +6,6 @@ const searchField = 'input[name=\'q\']'
 const header = '.HeaderResult__orange'
 const acceptCookiesButton = '.c24-cookie-consent-notice-buttons .c24-cookie-consent-button:nth-child(2)'
 const loginButton = '.c24-customer [href*=\'user/login\']'
-
 const emailField = '#cl_login'
 const submitEmailButton = 'button[value=\'weiter\']'
 const passwordField = '#cl_pw_register'
