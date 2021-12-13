@@ -15,13 +15,15 @@ describe('Check 24 tests', () => {
         startPage.acceptCookies()
     })
 
-    it('should search for product', () => {
+    it('should find cheapest offer', () => {
         startPage.searchForProduct("PS5")
-        resultPage.selectManufacturer("Sony")
-        resultPage.selectCategory('Sony Playstation')
-        resultPage.sortBy(Dropdown.PRICE_ASCENDING)
+        productPage.selectManufacturer("Sony")
+        productPage.selectCategory('Sony Playstation')
+        productPage.sortBy(Dropdown.PRICE_ASCENDING)
+        productPage.selectFirstProduct()
+        offersPage.selectFirstOffer()
 
-        resultPage.getProductTiles().should('have.length.greaterThan', 0)
+        offersPage.getOffersTitle().should('exist')
     })
 
     it('should start registration', () => {
