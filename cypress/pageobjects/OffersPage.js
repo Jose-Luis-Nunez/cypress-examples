@@ -2,7 +2,7 @@ export class OffersPage {
 
     constructor() {
         this.shopButton = '.offer-item button[title=\'zum Shop\']'
-        this.offersTitle = '.price-information-title'
+        this.offersTitle = '.product-info__title'
     }
 
     selectFirstOffer() {

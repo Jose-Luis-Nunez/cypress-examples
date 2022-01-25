@@ -18,7 +18,6 @@ describe('Check 24 tests', () => {
         productPage.selectCategory('Sony Playstation')
         productPage.sortBy(Dropdown.PRICE_ASCENDING)
         productPage.selectFirstProduct()
-        offersPage.selectFirstOffer()
 
         offersPage.getOffersTitle().should('exist')
     })
