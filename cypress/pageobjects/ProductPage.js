@@ -4,10 +4,10 @@ export class ProductPage extends AbstractPage {
 
     constructor() {
         super()
-        this.filterCheckBox = '.ChipContent__chip .ChipContent__filter-chip__content'
-        this.categories = '.user-none-select:first-child'
-        this.sortDropDown = 'select[name=sort_filter]'
-        this.productTiles = '.result-item__content'
+        this.filterCheckBox = '.check-box-option'
+        this.categories = '.category-select__item'
+        this.sortDropDown = '.select-sort__sort-item:nth-child(2)'
+        this.productTiles = '.product-details__title'
     }
 
     selectFirstProduct() {
@@ -30,12 +30,8 @@ export class ProductPage extends AbstractPage {
         })
     }
 
-    sortBy(option) {
-        cy.waitUntil(() => {
-            cy.get(this.sortDropDown).select(option).should('have.value', option)
-            cy.reload()
-            return Cypress.$(this.sortDropDown)
-        })
+    sortAscending() {
+        cy.get(this.sortDropDown).click()
     }
 }
 
