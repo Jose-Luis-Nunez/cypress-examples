@@ -1,4 +1,4 @@
-import {Given} from "cypress-cucumber-preprocessor/steps";
+import {Given, When} from "@badeball/cypress-cucumber-preprocessor";
 
 const url = 'https://www.check24.de'
 const searchField = 'input[name=\'q\']'
