@@ -5,7 +5,7 @@ export class ProductPage extends AbstractPage {
     constructor() {
         super()
         this.filterCheckBox = '.check-box-option'
-        this.categories = '.category-select__item'
+        this.categories = '.category-select__items'
         this.sortDropDown = '.select-sort__sort-item:nth-child(2)'
         this.productTiles = '.product-details__title'
     }
