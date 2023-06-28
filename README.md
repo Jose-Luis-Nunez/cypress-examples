@@ -56,3 +56,6 @@ The tests can be executed with the following command:
 * Chrome `cypress run --browser chrome`
 * Firefox `cypress run --browser firefox`
 * Electron `cypress run --headed`
+
+### OR open cypress and start tests manually
+`npx cypress open`
