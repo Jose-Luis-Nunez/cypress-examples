@@ -11,6 +11,7 @@ describe('Check 24 tests', () => {
 
     it('should find cheapest offer', () => {
         startPage.searchForProduct("PS5")
+
         productPage.selectManufacturer("Sony")
         productPage.selectCategory('Sony Playstation')
         productPage.sortAscending()
