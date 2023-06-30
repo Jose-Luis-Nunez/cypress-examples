@@ -3,7 +3,7 @@ name: Cypress chrome tests
 on:
   push:
   pull_request:
-    branches: [ master ]
+    branches: [master]
   schedule:
     - cron: '0 6 * * *'
 
@@ -11,23 +11,33 @@ jobs:
   chrome:
     runs-on: ubuntu-latest
     container: cypress/browsers:node14.17.0-chrome88-ff89
+
     strategy:
       fail-fast: false
       matrix:
-        containers: [ 1, 2 ]
+        containers: [1, 2]
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-cypress-
+
       - name: Cypress run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           browser: chrome
           headless: true
           parallel: true
           record: true
           group: 'UI - Chrome'
+          cache: true
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
