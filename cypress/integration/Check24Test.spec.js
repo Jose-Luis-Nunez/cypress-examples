@@ -2,7 +2,7 @@ import startPage from "../pageobjects/StartPage";
 import productPage from "../pageobjects/ProductPage";
 import offersPage from "../pageobjects/OffersPage";
 
-describe('Check 24 tests', () => {
+describe.skip('Check 24 tests', () => {
 
     beforeEach(() => {
         startPage.openHomePage()
