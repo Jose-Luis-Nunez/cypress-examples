@@ -1,0 +1,6 @@
+{
+  "watchForFileChanges": false,
+  "projectId": "bikke8",
+  "testFiles": "**/*.{feature,features,spec.js}",
+  "pageLoadTimeout": 90000
+}
