@@ -10,5 +10,3 @@ cypress/videos
 cypress/screenshots
 /test/**/*.js
 *.mp4
-
-
