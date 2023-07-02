@@ -1,4 +1,4 @@
-name: Cypress chrome tests
+name: Cypress Chrome Tests
 
 on:
   push:
@@ -8,20 +8,41 @@ on:
     - cron: '0 6 * * *'
 
 jobs:
-  chrome:
+  initialize_cache:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node14.17.0-chrome88-ff89
-
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3, 4]
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Cache dependencies and Cypress binary
+      - name: Cache Container Initialization
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.docker
+          key: ${{ runner.os }}-container-initialization
+
+  chrome:
+    needs: initialize_cache
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3, 4]
+    container: cypress/browsers:node14.17.0-chrome88-ff89
+
+    steps:
+      - name: Restore Cached Initialization
+        uses: actions/cache@v2
+        with:
+          path: ~/.docker
+          key: ${{ runner.os }}-container-initialization
+          restore-keys: ${{ runner.os }}-container-initialization
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache Dependencies and Cypress Binary
         uses: actions/cache@v2
         with:
           path: |
@@ -31,7 +52,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-cypress-
 
-      - name: Cypress run
+      - name: Cypress Run
         uses: cypress-io/github-action@v4
         with:
           browser: chrome
