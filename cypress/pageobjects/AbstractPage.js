@@ -4,8 +4,8 @@ export class AbstractPage {
         cy.get(listSelector)
             .each((element) => {
                 if (element.text() === searchString) {
-                    cy.wrap(element).click()
-                    return false
+                    cy.wrap(element).click();
+                    return false;
                 }
             })
     }

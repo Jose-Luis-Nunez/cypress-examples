@@ -27,11 +27,11 @@ Cypress.Commands.add('getIframeBody', () => {
     return cy
         .get('.c24-uli-loginlayer-iframe:first-child')
         .its('0.contentDocument.body').should('not.be.empty')
-        .then(cy.wrap)
+        .then(cy.wrap);
 })
 
 Cypress.Commands.add('openHomePage', () => {
-    cy.visit('https://www.check24.de/')
+    cy.visit('https://www.check24.de/');
 })
 
 import 'cypress-wait-until';

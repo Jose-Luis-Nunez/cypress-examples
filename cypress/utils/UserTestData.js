@@ -1,22 +1,22 @@
-import {uniqueNamesGenerator, colors, starWars, NumberDictionary} from 'unique-names-generator';
+import { uniqueNamesGenerator, colors, starWars, NumberDictionary } from 'unique-names-generator';
 
 export class UserTestData {
 
     constructor() {
-        this.email = this.getRandomEmail()
-        this.password = this.getRandomPassword()
+        this.email = this.getRandomEmail();
+        this.password = this.getRandomPassword();
     }
 
     getRandomEmail() {
-        const randomNumber = this.getRandomNumber(7)
+        const randomNumber = this.getRandomNumber(7);
         const characterName = uniqueNamesGenerator({
             dictionaries: [starWars, colors, randomNumber],
         })
-        return `${characterName}@gmail.com`
+        return `${characterName}@gmail.com`;
     }
 
     getRandomPassword() {
-        return `pw${this.getRandomNumber(6)}`
+        return `pw${this.getRandomNumber(6)}`;
     }
 
     getRandomNumber(numberOfDigits) {
@@ -25,10 +25,10 @@ export class UserTestData {
 
         for (let i = 0; i < numberOfDigits; i++) {
             if (i > 0) {
-                minRange = minRange * 10
-                maxRange = maxRange * 10
+                minRange = minRange * 10;
+                maxRange = maxRange * 10;
             }
         }
-        return NumberDictionary.generate({min: minRange, max: maxRange})
+        return NumberDictionary.generate({min: minRange, max: maxRange});
     }
 }
