@@ -3,7 +3,7 @@ name: Cypress Chrome Tests
 on:
   push:
   pull_request:
-    branches: [master]
+    branches: [main]
   schedule:
     - cron: '0 6 * * *'
 
@@ -49,15 +49,13 @@ jobs:
           key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
           restore-keys: ${{ runner.os }}-node-modules-
 
+      - name: Install Cypress
+        run: npm ci
+
       - name: Cypress Run
-        uses: cypress-io/github-action@v4
-        with:
-          browser: chrome
-          headless: true
-          parallel: ${{ matrix.containers }}
-          record: true
-          group: 'UI - Chrome'
-          cache: true
+        run: |
+          npm run build
+          npx cypress run --browser chrome --headless --parallel ${{ matrix.containers }} --record --group 'UI - Chrome'
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
