@@ -42,22 +42,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Cache Dependencies and Cypress Binary
+      - name: Cache Dependencies
         uses: actions/cache@v2
         with:
-          path: |
-            node_modules
-            ~/.cache/Cypress
-          key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-cypress-
+          path: node_modules
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-modules-
 
       - name: Cypress Run
         uses: cypress-io/github-action@v4
         with:
           browser: chrome
           headless: true
-          parallel: true
+          parallel: ${{ matrix.containers }}
           record: true
           group: 'UI - Chrome'
           cache: true
