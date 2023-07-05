@@ -13,7 +13,7 @@ export class UserTestData {
     }
 
     getRandomEmail() {
-        return `josenunezumi+${this.getCurrentTime()}${this.getRandomDigit(999)}@gmail.rofl`;
+        return `josenunez+${this.getCurrentTime()}${this.getRandomDigit(999)}@gmail.rofl`;
     }
 
     getCurrentTime() {
