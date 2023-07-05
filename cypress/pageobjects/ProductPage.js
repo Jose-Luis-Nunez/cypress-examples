@@ -15,19 +15,13 @@ export class ProductPage extends AbstractPage {
     }
 
     selectManufacturer(manufacturer) {
-        cy.waitUntil(() => {
-            this.clickOnListItem(this.filterCheckBox, manufacturer);
-            cy.reload();
-            return Cypress.$(this.filterCheckBox);
-        })
+        this.clickOnListItem(this.filterCheckBox, manufacturer);
+        cy.get(this.filterCheckBox).should('be.visible');
     }
 
     selectCategory(category) {
-        cy.waitUntil(() => {
-            this.clickOnListItem(this.categories, category);
-            cy.reload();
-            return Cypress.$(this.categories);
-        })
+        this.clickOnListItem(this.categories, category);
+        cy.get(this.categories).should('be.visible')
     }
 
     sortAscending() {
