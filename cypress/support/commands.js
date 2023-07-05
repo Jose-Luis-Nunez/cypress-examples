@@ -23,9 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+/**
+ * @memberOf cy
+ * @method getIframeBody
+ */
 Cypress.Commands.add('getIframeBody', () => {
     return cy
-        .get('.c24-uli-loginlayer-iframe:first-child')
+        .get('.c24-uli-loginlayer-iframe')
         .its('0.contentDocument.body').should('not.be.empty')
         .then(cy.wrap);
 })
