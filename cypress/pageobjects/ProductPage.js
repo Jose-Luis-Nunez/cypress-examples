@@ -1,4 +1,4 @@
-import {AbstractPage} from "./AbstractPage";
+import {AbstractPage} from './AbstractPage';
 
 export class ProductPage extends AbstractPage {
 
