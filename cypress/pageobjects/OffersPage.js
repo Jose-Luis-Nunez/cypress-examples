@@ -6,7 +6,7 @@ export class OffersPage {
     }
 
     selectFirstOffer() {
-        cy.get(this.shopButton).eq(0).click();
+        cy.get(this.shopButton).first().click();
     }
 
     getOffersTitle() {
