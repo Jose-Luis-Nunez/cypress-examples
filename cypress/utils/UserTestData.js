@@ -24,3 +24,5 @@ export class UserTestData {
         return Math.floor(Math.random() * (max + 1));
     }
 }
+
+export default new UserTestData;
