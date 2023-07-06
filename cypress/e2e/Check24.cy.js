@@ -1,6 +1,7 @@
 import startPage from "../pageobjects/StartPage";
 import productPage from "../pageobjects/ProductPage";
 import offersPage from "../pageobjects/OffersPage";
+import login from "../pageobjects/LoginIframe";
 import userTestData from "../utils/UserTestData";
 
 describe('Check 24 tests', () => {
@@ -21,8 +22,14 @@ describe('Check 24 tests', () => {
     })
 
     it('registration without payment', () => {
-        startPage.clickOnLogin()
-        cy.getIframeBody().find(startPage.registerButton).click()
-        cy.getIframeBody().find(startPage.emailInputField).type(userTestData.email)
+        startPage.clickOnLogin();
+        cy.clickInIframe(login.registerButton)
+        cy.getFromIframe(login.emailInputField).type(userTestData.email);
+        cy.clickInIframe(login.continueButton)
+        cy.getFromIframe(login.firstName).type("jose");
+        cy.getFromIframe(login.lastName).type("nunez");
+        cy.getFromIframe(login.password).type("ichbincool123");
+        cy.getFromIframe(login.passwordRepeat).type("ichbincool123");
+        cy.clickInIframe(login.submitUserDataButton)
     })
 })

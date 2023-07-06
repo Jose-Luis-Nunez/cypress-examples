@@ -33,3 +33,19 @@ Cypress.Commands.add('getIframeBody', () => {
         .its('0.contentDocument.body').should('not.be.empty')
         .then(cy.wrap);
 })
+
+/**
+ * @memberOf cy
+ * @method clickInIframe
+ */
+Cypress.Commands.add('clickInIframe', (selector) => {
+    cy.getIframeBody().find(selector).click();
+});
+
+/**
+ * @memberOf cy
+ * @method getFromIframe
+ */
+Cypress.Commands.add('getFromIframe', (selector) => {
+    return cy.getIframeBody().find(selector);
+});

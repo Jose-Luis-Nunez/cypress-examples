@@ -4,8 +4,6 @@ export class StartPage {
         this.acceptCookiesButton = '.c24-cookie-consent-notice-buttons .c24-cookie-consent-button:nth-child(2)';
         this.searchField = 'input[name=\'q\']';
         this.loginButton = '#c24-meinkonto-anmelden';
-        this.registerButton = 'a.c24-uli-cl-r-start-trigger';
-        this.emailInputField = '#cl_login'
     }
 
     openHomePage() {
