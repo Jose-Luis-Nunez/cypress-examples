@@ -19,6 +19,7 @@ describe('Check 24 tests', () => {
 
         offersPage.getOffersTitle().should('exist');
     })
+
     it('registration without payment', () => {
         startPage.clickOnLogin()
         cy.getIframeBody().find(startPage.registerButton).click()

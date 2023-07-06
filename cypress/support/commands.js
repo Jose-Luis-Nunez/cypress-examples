@@ -33,7 +33,3 @@ Cypress.Commands.add('getIframeBody', () => {
         .its('0.contentDocument.body').should('not.be.empty')
         .then(cy.wrap);
 })
-
-Cypress.Commands.add('openHomePage', () => {
-    cy.visit('https://www.check24.de/');
-})
