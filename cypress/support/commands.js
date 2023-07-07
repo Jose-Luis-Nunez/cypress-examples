@@ -36,16 +36,16 @@ Cypress.Commands.add('getIframeBody', () => {
 
 /**
  * @memberOf cy
- * @method clickInIframe
+ * @method iFrameClick
  */
-Cypress.Commands.add('clickInIframe', (selector) => {
+Cypress.Commands.add('iFrameClick', (selector) => {
     cy.getIframeBody().find(selector).click();
 });
 
 /**
  * @memberOf cy
- * @method getFromIframe
+ * @method iFrameGet
  */
-Cypress.Commands.add('getFromIframe', (selector) => {
+Cypress.Commands.add('iFrameGet', (selector) => {
     return cy.getIframeBody().find(selector);
 });
