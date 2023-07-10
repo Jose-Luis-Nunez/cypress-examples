@@ -1,4 +1,4 @@
-import {AbstractPage} from './AbstractPage';
+import { AbstractPage } from './AbstractPage';
 
 export class ProductPage extends AbstractPage {
 
@@ -21,7 +21,7 @@ export class ProductPage extends AbstractPage {
 
     selectCategory(category) {
         this.clickOnListItem(this.categories, category);
-        cy.get(this.categories).should('be.visible')
+        cy.get(this.categories).should('be.visible');
     }
 
     sortAscending() {
