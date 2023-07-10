@@ -18,5 +18,6 @@ module.exports = defineConfig({
         },
         baseUrl: 'https://www.check24.de/',
         specPattern: ['cypress/e2e/features/*.feature', 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}'],
+        pageLoadTimeout: 90000,
     },
 })
