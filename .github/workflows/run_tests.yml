@@ -52,9 +52,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-cypress-
 
-      # Added step to change ownership of Cypress cache directory
-      - name: Change ownership of Cypress cache directory
-        run: sudo chown -R $USER /github/home/.cache/Cypress
+      # Added step to change permissions of Cypress cache directory
+      - name: Change permissions of Cypress cache directory
+        run: chmod -R 777 /github/home/.cache/Cypress
 
       - name: Cypress Run
         uses: cypress-io/github-action@v4
