@@ -19,7 +19,7 @@ describe('Check 24 tests', () => {
         startPage.searchForProduct("PS5")
         productPage.selectManufacturer("Sony")
         productPage.selectCategory('Sony Playstation')
-        productPage.sortBy(Dropdown.PRICE_ASCENDING)
+        productPage.sortAscending();
         productPage.selectFirstProduct()
 
         offersPage.getOffersTitle().should('exist')
