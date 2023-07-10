@@ -1,3 +1,5 @@
+import login from "../pageobjects/LoginIframe";
+
 export class LoginIframe {
 
     constructor() {
@@ -10,6 +12,22 @@ export class LoginIframe {
         this.passwordRepeat = '#cl_ul_pw_register_repeat';
         this.submitUserDataButton = '#c24-uli-register-btn';
         this.sendEmailIcon = '.c24-uli-form > .c24-uli-tan-text rect';
+    }
+
+    startRegistration(email) {
+        cy.iFrameClick(login.registerButton);
+        cy.iFrameGet(login.emailInputField).type(email);
+        cy.iFrameClick(login.continueButton);
+        return this;
+    }
+
+    enterAccountDetails(userTestData) {
+        cy.iFrameGet(this.firstName).type(userTestData.firstName);
+        cy.iFrameGet(this.lastName).type(userTestData.lastName);
+        cy.iFrameGet(this.password).type(userTestData.password);
+        cy.iFrameGet(this.passwordRepeat).type(userTestData.passwordRepeat);
+        cy.iFrameClick(this.submitUserDataButton);
+        return this;
     }
 }
 

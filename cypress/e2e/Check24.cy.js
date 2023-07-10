@@ -23,14 +23,14 @@ describe('Check 24 tests', () => {
 
     it('registration without payment', () => {
         startPage.clickOnLogin();
-        cy.iFrameClick(login.registerButton);
-        cy.iFrameGet(login.emailInputField).type(userTestData.email);
-        cy.iFrameClick(login.continueButton);
-        cy.iFrameGet(login.firstName).type("jose");
-        cy.iFrameGet(login.lastName).type("nunez");
-        cy.iFrameGet(login.password).type("ichbincool123");
-        cy.iFrameGet(login.passwordRepeat).type("ichbincool123");
-        cy.iFrameClick(login.submitUserDataButton);
+        login
+            .startRegistration(userTestData.email)
+            .enterAccountDetails({
+                firstName: "jose",
+                lastName: "nunez",
+                password: "ichbincool123",
+                passwordRepeat: "ichbincool123",
+            })
         cy.iFrameGet(login.sendEmailIcon).should('be.visible');
     });
 });
