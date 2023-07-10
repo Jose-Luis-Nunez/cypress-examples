@@ -11,7 +11,7 @@ export class ProductPage extends AbstractPage {
     }
 
     selectFirstProduct() {
-        cy.get(this.productTiles).first().should('be.visible').click({ force: true });
+        cy.get(this.productTiles).should('be.visible').first().click({ force: true });
     }
 
     selectManufacturer(manufacturer) {
