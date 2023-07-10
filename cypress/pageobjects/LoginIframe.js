@@ -9,6 +9,7 @@ export class LoginIframe {
         this.password = '#cl_pw_register';
         this.passwordRepeat = '#cl_ul_pw_register_repeat';
         this.submitUserDataButton = '#c24-uli-register-btn';
+        this.sendEmailIcon = '.c24-uli-form > .c24-uli-tan-text rect';
     }
 }
 
