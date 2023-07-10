@@ -24,15 +24,6 @@ describe('Check 24 tests', () => {
 
         offersPage.getOffersTitle().should('exist')
     })
-
-    it('should start registration', () => {
-        const user = new UserTestData()
-
-        startPage.clickOnLogin()
-        registration.createNewAccount(user)
-
-        expect(registration.getBackButton()).to.exist
-    })
 })
 ```
 

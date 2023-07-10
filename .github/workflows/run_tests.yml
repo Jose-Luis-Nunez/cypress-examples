@@ -28,7 +28,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        containers: [1, 2]
+        containers: [1, 2, 3]
     container: cypress/browsers:node18.12.0-chrome107
 
     steps:
@@ -51,6 +51,10 @@ jobs:
           key: ${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-cypress-
+
+      # Added step to change permissions of Cypress cache directory
+      - name: Change permissions of Cypress cache directory
+        run: chmod -R 777 /github/home/.cache/Cypress
 
       - name: Cypress Run
         uses: cypress-io/github-action@v4

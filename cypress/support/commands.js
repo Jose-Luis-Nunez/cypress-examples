@@ -23,15 +23,29 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+/**
+ * @memberOf cy
+ * @method getIframeBody
+ */
 Cypress.Commands.add('getIframeBody', () => {
     return cy
-        .get('.c24-uli-loginlayer-iframe:first-child')
+        .get('.c24-uli-loginlayer-iframe')
         .its('0.contentDocument.body').should('not.be.empty')
         .then(cy.wrap);
 })
 
-Cypress.Commands.add('openHomePage', () => {
-    cy.visit('https://www.check24.de/');
-})
+/**
+ * @memberOf cy
+ * @method iFrameClick
+ */
+Cypress.Commands.add('iFrameClick', (selector) => {
+    cy.getIframeBody().find(selector).click();
+});
 
-import 'cypress-wait-until';
+/**
+ * @memberOf cy
+ * @method iFrameGet
+ */
+Cypress.Commands.add('iFrameGet', (selector) => {
+    return cy.getIframeBody().find(selector);
+});

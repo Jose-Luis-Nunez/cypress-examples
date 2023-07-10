@@ -1,12 +1,12 @@
 export class AbstractPage {
 
     clickOnListItem(listSelector, searchString) {
-        cy.get(listSelector)
-            .each((element) => {
-                if (element.text() === searchString) {
-                    cy.wrap(element).click();
-                    return false;
+        cy.contains(listSelector, searchString)
+            .click()
+            .then(($el) => {
+                if ($el.length === 0) {
+                    throw new Error(`"${searchString}" not in "${listSelector}"`);
                 }
-            })
+            });
     }
 }

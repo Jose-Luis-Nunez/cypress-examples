@@ -1,6 +1,8 @@
 import startPage from "../pageobjects/StartPage";
 import productPage from "../pageobjects/ProductPage";
 import offersPage from "../pageobjects/OffersPage";
+import login from "../pageobjects/LoginIframe";
+import userTestData from "../utils/UserTestData";
 
 describe('Check 24 tests', () => {
 
@@ -18,4 +20,17 @@ describe('Check 24 tests', () => {
 
         offersPage.getOffersTitle().should('exist');
     })
-})
+
+    it('registration without payment', () => {
+        startPage.clickOnLogin();
+        login
+            .startRegistration(userTestData.email)
+            .enterAccountDetails({
+                firstName: "jose",
+                lastName: "nunez",
+                password: "ichbincool123",
+                passwordRepeat: "ichbincool123",
+            })
+        cy.iFrameGet(login.sendEmailIcon).should('be.visible');
+    });
+});

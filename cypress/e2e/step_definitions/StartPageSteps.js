@@ -1,17 +1,16 @@
 import {Given, When} from "@badeball/cypress-cucumber-preprocessor";
 
-const url = 'https://www.check24.de'
-const searchField = 'input[name=\'q\']'
-const acceptCookiesButton = '.c24-cookie-consent-notice-buttons .c24-cookie-consent-button:nth-child(2)'
+const searchField = 'input[name=\'q\']';
+const acceptCookiesButton = '.c24-cookie-consent-notice-buttons .c24-cookie-consent-button:nth-child(2)';
 
 Given('I open Check24 page', () => {
-    openHomePage(url);
+    openHomePage(Cypress.config('baseUrl'));
     acceptCookies(acceptCookiesButton);
-})
+});
 
 When('I search for {string}', (product) => {
     searchForProduct(product);
-})
+});
 
 const openHomePage = (url) => {
     cy.visit(url);
