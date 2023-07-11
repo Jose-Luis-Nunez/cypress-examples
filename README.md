@@ -5,7 +5,7 @@
 Example Cypress project for web UI automation with page object pattern and cucumber.
 
 
-### Example test with page object pattern
+### Example test with page object pattern and iFrames
 
 ```js
 describe('Check 24 tests', () => {
@@ -24,6 +24,19 @@ describe('Check 24 tests', () => {
 
         offersPage.getOffersTitle().should('exist')
     })
+
+    it('registration without payment', () => {
+        startPage.clickOnLogin();
+        login
+            .startRegistration(userTestData.email)
+            .enterAccountDetails({
+                firstName: "Max",
+                lastName: "Mustermann",
+                password: "ichbincool321",
+                passwordRepeat: "ichbincool321",
+            })
+        cy.iFrameGet(login.sendEmailIcon).should('be.visible');
+    });
 })
 ```
 

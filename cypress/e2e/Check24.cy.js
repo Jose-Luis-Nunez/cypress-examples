@@ -26,10 +26,10 @@ describe('Check 24 tests', () => {
         login
             .startRegistration(userTestData.email)
             .enterAccountDetails({
-                firstName: "jose",
-                lastName: "nunez",
-                password: "ichbincool123",
-                passwordRepeat: "ichbincool123",
+                firstName: "Max",
+                lastName: "Mustermann",
+                password: "ichbincool321",
+                passwordRepeat: "ichbincool321",
             })
         cy.iFrameGet(login.sendEmailIcon).should('be.visible');
     });
